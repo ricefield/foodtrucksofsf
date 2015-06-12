@@ -1,0 +1,25 @@
+{
+  "name": "foodtrucksofsf",
+  "version": "0.0.1",
+  "description": "SF food truck map (uber coding challenge)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ricefield/foodtrucksofsf.git"
+  },
+  "author": "ricefield",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ricefield/foodtrucksofsf/issues"
+  },
+  "homepage": "https://github.com/ricefield/foodtrucksofsf#readme",
+  "dependencies": {
+    "react": "^0.13.3",
+    "react-googlemaps": "^0.4.0",
+    "reactify": "^1.1.1",
+    "reflux": "^0.2.8"
+  }
+}

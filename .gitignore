@@ -58,3 +58,6 @@ target/
 
 # OS X
 .DS_Store
+
+# Node/NPM
+node_modules
