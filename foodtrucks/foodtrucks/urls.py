@@ -6,6 +6,7 @@ from rest_framework import routers
 from trucks.views import TruckViewSet
 
 urlpatterns = [
+    url(r'^$', 'foodtrucks.views.index', name='index'),
     url(r'^admin/', include(admin.site.urls)),
 ]
 
