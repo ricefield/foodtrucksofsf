@@ -3,7 +3,7 @@ from django.contrib import admin
 
 from rest_framework import routers
 
-from trucks.views import TruckViewSet
+from trucks.views import TruckViewSet, NearbyTrucks
 
 urlpatterns = [
     url(r'^$', 'foodtrucks.views.index', name='index'),
@@ -14,3 +14,4 @@ router = routers.DefaultRouter()
 router.register(r'trucks', TruckViewSet)
 
 urlpatterns.append(url(r'^api/', include(router.urls)),)
+urlpatterns.append(url(r'^api/nearby', NearbyTrucks.as_view()))
