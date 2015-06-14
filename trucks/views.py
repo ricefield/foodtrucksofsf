@@ -1,6 +1,7 @@
 import math, geopy
 from rest_framework import viewsets, generics
 from geopy.distance import distance
+from geopy.geocoders import GoogleV3
 
 from .models import Truck
 from .serializers import TruckSerializer
@@ -16,9 +17,9 @@ class NearbyTrucks(generics.ListAPIView):
     model = Truck
 
     def get_queryset(self):
-        if self.request.query_params.get('search', False):
+        if self.request.query_params.get('address', False):
             geolocator = GoogleV3()
-            loc = geolocator.geocode(item['address']+ " San Francisco, CA")
+            loc = geolocator.geocode(self.request.query_params['address']+ " San Francisco, CA")
             center = loc.latitude, loc.longitude
         elif self.request.query_params.get('lat', False):
             center = float(self.request.query_params['lat']), float(self.request.query_params['lon'])
