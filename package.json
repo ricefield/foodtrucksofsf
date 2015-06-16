@@ -17,9 +17,14 @@
   },
   "homepage": "https://github.com/ricefield/foodtrucksofsf#readme",
   "dependencies": {
+    "jsx-loader": "^0.13.2",
+    "node-libs-browser": "^0.5.2",
     "react": "^0.13.3",
     "react-googlemaps": "^0.4.0",
+    "react-tools": "^0.13.3",
     "reactify": "^1.1.1",
-    "reflux": "^0.2.8"
+    "reflux": "^0.2.8",
+    "superagent": "^1.2.0",
+    "webpack": "^1.9.10"
   }
 }
