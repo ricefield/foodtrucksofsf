@@ -35,6 +35,7 @@ var App = React.createClass({
           <Marker position={this.state.center} icon={"/static/your_location.png"} />
           {this.state['trucks'].map(this.renderMarkers)}
         </Map>
+        <SearchBar center={this.state.center} radius={this.state.radius} />
       </div>
     );
   },

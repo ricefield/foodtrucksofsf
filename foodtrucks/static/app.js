@@ -20467,7 +20467,8 @@
 	          onClick: actions.clickMap}, 
 	          React.createElement(Marker, {position: this.state.center, icon: "/static/your_location.png"}), 
 	          this.state['trucks'].map(this.renderMarkers)
-	        )
+	        ), 
+	        React.createElement(SearchBar, {center: this.state.center, radius: this.state.radius})
 	      )
 	    );
 	  },
@@ -24846,10 +24847,20 @@
 
 	  mixins: [Reflux.connect(store)],
 
+	  handleChange: function(event) {
+	    console.log(event);
+	    store.onChangeRadius(event.target.value);
+	  },
+
 	  render: function() {
 	    return (
 	      React.createElement("div", {className: "searchbar"}, 
-	        "Radius: ", React.createElement("input", {type: "text"}, this.props.radius)
+	        React.createElement("span", null, "Radius: "), 
+	        React.createElement("select", {onChange: this.handleChange}, 
+	          React.createElement("option", {value: "1.0"}, "1 mi."), 
+	          React.createElement("option", {value: "0.5"}, "0.5 mi."), 
+	          React.createElement("option", {value: "0.25"}, "0.25 mi.")
+	        )
 	      )
 	    );
 	  },
