@@ -20445,7 +20445,7 @@
 	var Map = ReactGoogleMaps.Map;
 	var Marker = ReactGoogleMaps.Marker;
 	var Circle = ReactGoogleMaps.Circle;
-	var SearchBar = __webpack_require__(205)
+	var RadiusPicker = __webpack_require__(207)
 	var TruckList = __webpack_require__(206)
 
 	var App = React.createClass({displayName: "App",
@@ -20468,7 +20468,8 @@
 	          React.createElement(Marker, {position: this.state.center, icon: "/static/your_location.png"}), 
 	          this.state['trucks'].map(this.renderMarkers)
 	        ), 
-	        React.createElement(SearchBar, {center: this.state.center, radius: this.state.radius})
+	        React.createElement(RadiusPicker, {center: this.state.center, radius: this.state.radius}), 
+	        React.createElement(TruckList, {trucks: this.state.trucks})
 	      )
 	    );
 	  },
@@ -24833,7 +24834,8 @@
 
 
 /***/ },
-/* 205 */
+/* 205 */,
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24843,7 +24845,49 @@
 	var actions = __webpack_require__(184);
 	var store = __webpack_require__(158);
 
-	var SearchBar = React.createClass({displayName: "SearchBar",
+	var TruckList = React.createClass({displayName: "TruckList",
+
+	  mixins: [Reflux.connect(store)],
+
+	  render: function() {
+	    var list = "";
+	    return (
+	      React.createElement("div", {className: "trucklist"}, 
+	        React.createElement("ul", null, 
+	          this.props['trucks'].map(this.renderList)
+	        )
+	      )
+	    );
+	  },
+
+	  renderList: function(truck) {
+	    var foods = truck.food.split(':').join(',')
+	    return (
+	      React.createElement("li", {key: truck.id}, 
+	        React.createElement("h4", null, truck.name, " ", React.createElement("br", null), 
+	        React.createElement("small", null, truck.address)), 
+	        React.createElement("p", null, React.createElement("small", null, React.createElement("b", null, "Food:"), " ", foods)), 
+	        React.createElement("hr", null)
+	      )
+	      );
+	  },
+
+	});
+
+	module.exports = TruckList;
+
+/***/ },
+/* 207 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	var React = __webpack_require__(1);
+	var Reflux = __webpack_require__(159);
+
+	var actions = __webpack_require__(184);
+	var store = __webpack_require__(158);
+
+	var RadiusPicker = React.createClass({displayName: "RadiusPicker",
 
 	  mixins: [Reflux.connect(store)],
 
@@ -24854,8 +24898,8 @@
 
 	  render: function() {
 	    return (
-	      React.createElement("div", {className: "searchbar"}, 
-	        React.createElement("span", null, "Radius: "), 
+	      React.createElement("div", {className: "radiuspicker"}, 
+	        React.createElement("span", null, React.createElement("b", null, "Radius:"), "   "), 
 	        React.createElement("select", {onChange: this.handleChange}, 
 	          React.createElement("option", {value: "1.0"}, "1 mi."), 
 	          React.createElement("option", {value: "0.5"}, "0.5 mi."), 
@@ -24867,13 +24911,7 @@
 
 	});
 
-	module.exports = SearchBar;
-
-/***/ },
-/* 206 */
-/***/ function(module, exports, __webpack_require__) {
-
-	
+	module.exports = RadiusPicker;
 
 /***/ }
 /******/ ]);

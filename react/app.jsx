@@ -12,7 +12,7 @@ var store = require('./store.js')
 var Map = ReactGoogleMaps.Map;
 var Marker = ReactGoogleMaps.Marker;
 var Circle = ReactGoogleMaps.Circle;
-var SearchBar = require("./searchbar.jsx")
+var RadiusPicker = require("./radiuspicker.jsx")
 var TruckList = require("./trucklist.jsx")
 
 var App = React.createClass({
@@ -35,7 +35,8 @@ var App = React.createClass({
           <Marker position={this.state.center} icon={"/static/your_location.png"} />
           {this.state['trucks'].map(this.renderMarkers)}
         </Map>
-        <SearchBar center={this.state.center} radius={this.state.radius} />
+        <RadiusPicker center={this.state.center} radius={this.state.radius} />
+        <TruckList trucks={this.state.trucks} />
       </div>
     );
   },

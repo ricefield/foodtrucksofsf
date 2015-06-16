@@ -5,7 +5,7 @@ var Reflux = require('reflux');
 var actions = require('./actions.js');
 var store = require('./store.js');
 
-var SearchBar = React.createClass({
+var RadiusPicker = React.createClass({
 
   mixins: [Reflux.connect(store)],
 
@@ -16,8 +16,8 @@ var SearchBar = React.createClass({
 
   render: function() {
     return (
-      <div className="searchbar">
-        <span>Radius: </span>
+      <div className="radiuspicker">
+        <span><b>Radius:</b> &nbsp; </span>
         <select onChange={this.handleChange}>
           <option value="1.0">1 mi.</option>
           <option value="0.5">0.5 mi.</option>
@@ -29,4 +29,4 @@ var SearchBar = React.createClass({
 
 });
 
-module.exports = SearchBar;
+module.exports = RadiusPicker;
