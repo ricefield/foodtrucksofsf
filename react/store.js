@@ -1,6 +1,7 @@
 'use strict';
 var Reflux = require('reflux');
 var request = require('superagent');
+var _ = require('underscore');
 var actions = require('./actions.js');
 
 var GoogleMapsAPI = window.google.maps;
@@ -32,7 +33,7 @@ var Store = Reflux.createStore({
       .get('/api/nearby')
       .query({ lat: this.state['center'].lat(), lon: this.state['center'].lng(), radius: this.state.radius})
       .end(function(err, res) {
-        this.state['trucks'] = res.body;
+        this.state['trucks'] = _.sortBy(res.body, function(o) {return o.distance;});
         this.trigger(this.state);
       }.bind(this));
   },

@@ -48,5 +48,7 @@ html, body {
 }
 
 .trucklist li p {
+  font-size: 12px;
   margin-top: 0px;
+  margin-bottom: 0px;
 }

@@ -26,7 +26,8 @@ var TruckList = React.createClass({
       <li key={truck.id}>
         <h4>{truck.name} <br/>
         <small>{truck.address}</small></h4>
-        <p><small><b>Food:</b> {foods}</small></p>
+        <p><b>Distance: </b> {truck.distance.toFixed(2)} miles</p>
+        <p><b>Food: </b> {foods}</p>
         <hr/>
       </li>
       );
