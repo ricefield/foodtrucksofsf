@@ -37,4 +37,13 @@ class NearbyTrucks(generics.ListAPIView):
         east = center[1]-lon_offset
         west = center[1]+lon_offset
 
-        return Truck.objects.filter(lat__range=(south, north)).filter(long__range=(east, west))
+        trucks = list(Truck.objects.filter(lat__range=(south, north)).filter(long__range=(east, west)))
+
+        for truck in list(trucks):
+            dist = distance((truck.lat, truck.long), center).miles
+            if dist > radius:
+                trucks.remove(truck)
+            else:
+                truck.distance = dist
+
+        return trucks
