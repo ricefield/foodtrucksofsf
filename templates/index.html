@@ -15,7 +15,11 @@
   </head>
 
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div class="loading">
+        <img src="{% static "loading_spinner.gif" %}" />
+      </div>
+    </div>
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script type="text/javascript" src="{% static "app.js" %}"></script>
   </body>
