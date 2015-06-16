@@ -7,7 +7,7 @@ from trucks.models import Truck
 
 api_url = 'https://data.sfgov.org/resource/6a9r-agq8.json?$$exclude_system_fields=false&status=APPROVED'
 headers = {'X-App-Token': 'mbB8LuRTwTwODNOcQNYLEKCXJ'}
-geolocator = GoogleV3()
+geolocator = GoogleV3(api_key="AIzaSyCPlyfyEB3jUWgmlxnSeDkFvm6xPcF8Gsg")
 
 r = requests.get(api_url, headers=headers)
 
