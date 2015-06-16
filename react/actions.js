@@ -3,11 +3,12 @@ var Reflux = require('reflux');
 
 var Actions = Reflux.createActions([
   "load",
+  "setMapNode",
   "resize",
   "clickMap",
   "searchAddress",
   "changeRadius",
-  "clickPin",
+  "clickMarker",
 ]);
 
 module.exports = Actions;

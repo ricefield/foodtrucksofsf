@@ -11,6 +11,21 @@ html, body {
   width: 100%;
 }
 
+h1 {
+  position: absolute;
+  top: 0px;
+  left: 100px;
+  background-color: #ffffff;
+  padding: 15px;
+  z-index: 999;
+  line-height: 0.7em;
+}
+
+h1 small {
+  font-size: 14px;
+  font-weight: 400;
+}
+
 .radiuspicker {
   position: absolute;
   top: 50px;

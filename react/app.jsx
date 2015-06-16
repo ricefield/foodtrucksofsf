@@ -2,6 +2,7 @@
 var React = require('react');
 var Reflux = require('reflux');
 var ReactGoogleMaps = require('react-googlemaps');
+var vsprintf = require("sprintf-js").vsprintf
 
 var GoogleMapsAPI = window.google.maps;
 var LatLng = GoogleMapsAPI.LatLng;
@@ -20,13 +21,16 @@ var App = React.createClass({
   mixins: [Reflux.connect(store)],
 
   componentDidMount: function () {
-    actions.load();   
+    actions.load();     
   },
 
   render: function() {
     return (
       <div>
+        <h1>Food Trucks of SF <br/>
+          <small><i>Click anywhere to begin</i></small></h1>
         <Map
+          ref="myMap"
           initialZoom={13}
           initialCenter={this.state.center}
           width={this.state.mapWidth}
@@ -43,8 +47,28 @@ var App = React.createClass({
 
   renderMarkers: function(truck, index) {
     var latlng = new LatLng(parseFloat(truck['lat']), parseFloat(truck['long']));
+
+    var handleClick = function(event) {
+      var contentString = vsprintf("<h2>%s <br/> \
+        <small>%s</small></h2> \
+        <p><b>Distance: </b> %s miles</p> \
+        <p><b>Food: </b> %s</p>", [truck.name, truck.address, truck.distance.toFixed(2), truck.food.split(':').join(',')]);
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        position: event.latLng,
+        pixelOffset: {width:0, height:-25},
+        maxWidth: 250,
+      });
+      infowindow.open(this.refs.myMap.refs.map.getMapNode());
+    }.bind(this);
+
     return (
-      <Marker title={truck['name']} position={latlng} key={index} />
+      <Marker 
+        title={truck['name']} 
+        position={latlng} 
+        key={index} 
+        onClick={handleClick} 
+      />
       );
   },
 

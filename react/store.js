@@ -21,6 +21,7 @@ var Store = Reflux.createStore({
       trucks: [],
       center: new LatLng(37.7577, -122.4376),
       radius: 1.0,
+      map: null,
       mapHeight: window.innerHeight,
       mapWidth: window.innerWidth,
     };
@@ -49,7 +50,9 @@ var Store = Reflux.createStore({
     this.getTrucks();
   },
 
-  onSearchAddress: function() {
+  onSetMapNode: function(mapnode) {
+    this.state.map = mapnode;
+    console.log(this.state.map);
   },
 
   onChangeRadius: function(radius) {
@@ -57,8 +60,8 @@ var Store = Reflux.createStore({
     this.getTrucks();
   },
 
-  onClickPin: function() {
-
+  onClickMarker: function(event) {
+    console.log(event);
   },
 });
 
