@@ -12,11 +12,12 @@ class Tests(TestCase):
         lindas = Truck.objects.create(name="Linda's Catering", type="Truck", address="1219 07TH AVE", food="Hot Dogs, Hamburgers, Nachos, Steaks, Pastas, Asian Dishes, Tri-Tip Sandwiches, Sodas & Water", lat=37.765496987619237, long=-122.464597619571)
 
     def test_truck_fields(self):
+        allowed_error = 0.0000001
         evas = Truck.objects.get(name="Eva's Catering")
         self.assertEqual(evas.name, "Eva's Catering")
         self.assertEqual(evas.address, "1650 20TH AVE")
-        self.assertEqual(evas.lat, 37.757984190528637)
-        self.assertEqual(evas.long, -122.433465780407)
+        self.assertTrue(abs(evas.lat - 37.757984190528637) <= allowed_error)
+        self.assertTrue(abs(evas.long - (-122.433465780407)) <= allowed_error)
 
     def test_distance(self):
         center = (37.7577, -122.4376)
