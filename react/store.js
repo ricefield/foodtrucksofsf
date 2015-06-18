@@ -16,7 +16,7 @@ var Store = Reflux.createStore({
   listenables: [actions],
 
   init: function() {
-    this.listenTo(actions.load, this.getTrucks);
+    this.listenTo(actions.load, this.getTrucks);  // on load, get trucks
   },
 
   getInitialState: function() {
@@ -28,7 +28,6 @@ var Store = Reflux.createStore({
       mapHeight: window.innerHeight,
       mapWidth: window.innerWidth,
     };
-    this.getTrucks();
     return this.state;
   },
 
@@ -55,19 +54,10 @@ var Store = Reflux.createStore({
     this.getTrucks();
   },
 
-  onSetMapNode: function(mapnode) {
-    this.state.map = mapnode;
-    console.log(this.state.map);
-  },
-
   onChangeRadius: function(radius) {
     // set new radius
     this.state.radius = radius;
     this.getTrucks();
-  },
-
-  onClickMarker: function(event) {
-    console.log(event);
   },
 });
 
