@@ -1,8 +1,6 @@
 'use strict';
 var React = require('react');
 var Reflux = require('reflux');
-
-var actions = require('./actions.js');
 var store = require('./store.js');
 
 var RadiusPicker = React.createClass({

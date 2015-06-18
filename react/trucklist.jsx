@@ -1,8 +1,6 @@
 'use strict';
 var React = require('react');
 var Reflux = require('reflux');
-
-var actions = require('./actions.js');
 var store = require('./store.js');
 
 var TruckList = React.createClass({
@@ -10,7 +8,6 @@ var TruckList = React.createClass({
   mixins: [Reflux.connect(store)],
 
   render: function() {
-    var list = "";
     return (
       <div className="trucklist">
         <ul>

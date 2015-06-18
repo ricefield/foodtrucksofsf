@@ -12,7 +12,6 @@ var store = require('./store.js')
 
 var Map = ReactGoogleMaps.Map;
 var Marker = ReactGoogleMaps.Marker;
-var Circle = ReactGoogleMaps.Circle;
 var RadiusPicker = require("./radiuspicker.jsx")
 var TruckList = require("./trucklist.jsx")
 
