@@ -3,10 +3,10 @@
 Food Trucks of SF provides a way for SF foodies to discover food trucks around SF by displaying all approved food trucks within a certain radius from anywhere on the map. If you ever wanted to find a food truck near your home or office, it's now a little easier than having to walk around. You can try out the app at [foodtrucksofsf.herokuapp.com/](http://foodtrucksofsf.herokuapp.com/). It's running on Heroku's free tier, so give it a couple seconds to spin up if it doesn't load right away.
 
 ## Architecture
-This a full-stack app that I built for the Uber coding challenge. I'll describe the basics of the architecture here. Contributions are welcome (see below).
+This a full-stack app that I built for the Uber coding challenge. I'll describe the basics of the architecture here. Contributions are welcome ([see below](https://github.com/ricefield/foodtrucksofsf#contributing)).
 
 ### Backend
-The backend is written in Python, using the popular [Django]() framework, leveraging the popular [Django REST framework](http://www.django-rest-framework.org/) to build out the API and the [geopy](https://github.com/geopy/geopy) library to do geocoding and distance calculations. 
+The backend is written in Python, using the popular [Django]() framework, leveraging the popular [Django REST framework](http://www.django-rest-framework.org/) to build out the API and the [geopy](https://github.com/geopy/geopy) library to do geocoding and distance calculations. [More detailed API docs here](https://github.com/ricefield/foodtrucksofsf/blob/master/API.md)
 
 Food truck data is fetched from the [DataSF Mobile Food Facility Permit API](https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sfat?) and stored in a PostgreSQL database. The script for this is actually outside the scope of the Django project, in [fetch_data.py](https://github.com/ricefield/foodtrucksofsf/blob/master/fetch_data.py). In production, I use Heroku Scheduler to run this once a night to retrieve new data. 
 
@@ -18,6 +18,8 @@ Alternatively, I also considered taking advantage of Django's GIS framework, [Ge
 The frontend is built using [React](http://facebook.github.io/react/) using the [Flux](https://facebook.github.io/flux/) architecture (specifically, using the [Reflux](https://github.com/spoike/refluxjs) implementation). This was my first time using React in a web app. I had played around with React not too long after it came out, and I was pretty impressed with it, so I jumped at the opportunity to use it in a project, figuring it was a great learning opportunity. Since then, Facebook had announced the Flux architecture, and several solid implementations of Flux have been floating around on Github, so I tried out Reflux at a friend's recommendation. 
 
 Overall, I had a great time. Working in React is pretty awesome, and the abstractions provided by Reflux (actions and store) make it much easier than simply dumping a lot of state handling logic into your React components (10/10 would code again). 
+
+React components and Reflux code is in `react/` and gets packaged by webpack into `static/app.js`. Django serves up the `templates/index.html` container which `app.js` writes into to render the interface.
 
 ### Deployment
 Project is deployed on Heroku ([foodtrucksofsf.herokuapp.com/](http://foodtrucksofsf.herokuapp.com/)). Deploying a Django app on Heroku is [pretty straightforward](https://devcenter.heroku.com/articles/getting-started-with-django), and there are a lot of packages to make this easy. 
