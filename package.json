@@ -4,11 +4,18 @@
   "description": "SF food truck map (uber coding challenge)",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ricefield/foodtrucksofsf.git"
+  },
+  "jest": {
+    "testDirectoryName": "react/tests",
+    "scriptPreprocessor": "react/tests/preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
   },
   "author": "ricefield",
   "license": "MIT",
@@ -17,6 +24,8 @@
   },
   "homepage": "https://github.com/ricefield/foodtrucksofsf#readme",
   "dependencies": {
+    "jest": "^0.1.40",
+    "jest-cli": "^0.4.13",
     "jsx-loader": "^0.13.2",
     "node-libs-browser": "^0.5.2",
     "react": "^0.13.3",
