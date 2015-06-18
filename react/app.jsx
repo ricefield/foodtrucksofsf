@@ -58,6 +58,7 @@ var App = React.createClass({
         position: event.latLng,
         pixelOffset: {width:0, height:-25},
         maxWidth: 250,
+        zIndex: 999,
       });
       infowindow.open(this.refs.myMap.refs.map.getMapNode());
     }.bind(this);
