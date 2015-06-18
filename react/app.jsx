@@ -50,7 +50,7 @@ var App = React.createClass({
           height={this.state.mapHeight}
           onClick={actions.clickMap}>
           <Marker position={this.state.center} icon={"/static/your_location.png"} />
-          {this.state['trucks'].map(this.renderMarkers)}
+          {this.state.trucks.map(this.renderMarkers)}
         </Map>
         <RadiusPicker center={this.state.center} radius={this.state.radius} />
         <TruckList trucks={this.state.trucks} />
@@ -59,7 +59,7 @@ var App = React.createClass({
   },
 
   renderMarkers: function(truck, index) {
-    var latlng = new LatLng(parseFloat(truck['lat']), parseFloat(truck['long']));
+    var latlng = new LatLng(parseFloat(truck.lat), parseFloat(truck.long));
 
     // displays infowindow on Marker click
     // TODO: refactor to use Reflux action
@@ -83,7 +83,7 @@ var App = React.createClass({
 
     return (
       <Marker 
-        title={truck['name']} 
+        title={truck.name} 
         position={latlng} 
         key={index} 
         onClick={handleClick} />

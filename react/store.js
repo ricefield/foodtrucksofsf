@@ -35,22 +35,22 @@ var Store = Reflux.createStore({
     // pull new truck data from API and triggers a state change
     request
       .get('/api/nearby')
-      .query({ lat: this.state['center'].lat(), lon: this.state['center'].lng(), radius: this.state.radius})
+      .query({ lat: this.state.center.lat(), lon: this.state.center.lng(), radius: this.state.radius})
       .end(function(err, res) {
-        this.state['trucks'] = _.sortBy(res.body, function(o) {return o.distance;});
+        this.state.trucks = _.sortBy(res.body, function(o) {return o.distance;});  // sort by distance
         this.trigger(this.state);
       }.bind(this));
   },
 
   onResize: function() {
-    this.state['mapHeight'] = window.innerHeight;
-    this.state['mapWidht'] = window.innerWidth;
+    this.state.mapHeight = window.innerHeight;
+    this.state.mapWidht = window.innerWidth;
     this.trigger(this.state);
   },
 
   onClickMap: function(mapEvent) {
     // set new center
-    this.state['center'] = mapEvent.latLng;
+    this.state.center = mapEvent.latLng;
     this.getTrucks();
   },
 

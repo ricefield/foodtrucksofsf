@@ -14,7 +14,7 @@ var TruckList = React.createClass({
     return (
       <div className="trucklist">
         <ul>
-          {this.props['trucks'].map(this.renderList)}
+          {this.props.trucks.map(this.renderList)}
         </ul>
       </div>
     );
