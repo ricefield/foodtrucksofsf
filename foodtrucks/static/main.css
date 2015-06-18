@@ -49,6 +49,17 @@ h1 small {
   height: 30px;
 }
 
+.locator {
+  padding: 5px;
+  padding-bottom: 3px;
+  float: right;
+}
+
+.locator img{
+  height: 15px;
+  width: 15px;
+}
+
 .trucklist {
   top: 60px;
   right: 30px;

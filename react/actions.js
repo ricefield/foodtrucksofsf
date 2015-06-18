@@ -11,6 +11,7 @@ var Actions = Reflux.createActions([
   "clickMap",
   "searchAddress",  // TODO: add search bar
   "changeRadius",
+  "locate",
   "clickMarker",  // TODO: refactor infowindow display
 ]);
 

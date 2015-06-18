@@ -31,6 +31,12 @@ var Store = Reflux.createStore({
     return this.state;
   },
 
+  changeCenter: function(latLng) {
+    // change center and fetch new data
+    this.state.center = latLng;
+    this.getTrucks();
+  },
+
   getTrucks: function() {
     // pull new truck data from API and triggers a state change
     request
@@ -50,14 +56,20 @@ var Store = Reflux.createStore({
 
   onClickMap: function(mapEvent) {
     // set new center
-    this.state.center = mapEvent.latLng;
-    this.getTrucks();
+    this.changeCenter(mapEvent.latLng);
   },
 
   onChangeRadius: function(radius) {
     // set new radius
     this.state.radius = radius;
     this.getTrucks();
+  },
+
+  onLocate: function() {
+    // geolocate the user and set new center
+    navigator.geolocation.getCurrentPosition(function(position) {
+      this.changeCenter(new LatLng(position.coords.latitude, position.coords.longitude));
+    }.bind(this)); 
   },
 });
 

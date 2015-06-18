@@ -2,6 +2,7 @@
 var React = require('react');
 var Reflux = require('reflux');
 var store = require('./store.js');
+var Locator = require('./locator.jsx');
 
 /*  radiuspicker.jsx
     Pretty straightfoward select input to change search radius.
@@ -24,6 +25,7 @@ var RadiusPicker = React.createClass({
           <option value="0.5">0.5 mi.</option>
           <option value="0.25">0.25 mi.</option>
         </select>
+        <Locator/>
       </div>
     );
   },
