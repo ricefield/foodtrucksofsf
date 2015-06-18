@@ -3,6 +3,9 @@ var React = require('react');
 var Reflux = require('reflux');
 var store = require('./store.js');
 
+/*  radiuspicker.jsx
+    Renders a <ul> of trucks in the current state.
+*/
 var TruckList = React.createClass({
 
   mixins: [Reflux.connect(store)],

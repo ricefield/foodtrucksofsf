@@ -7,7 +7,10 @@ var actions = require('./actions.js');
 var GoogleMapsAPI = window.google.maps;
 var LatLng = GoogleMapsAPI.LatLng;
 
-/* */
+/*  store.js
+    The Store here manages the state for the entire view, listening to actions,
+    and triggering state changes (which causes the React components to re-render).
+*/
 var Store = Reflux.createStore({
 
   listenables: [actions],
@@ -19,7 +22,7 @@ var Store = Reflux.createStore({
   getInitialState: function() {
     this.state = {
       trucks: [],
-      center: new LatLng(37.7577, -122.4376),
+      center: new LatLng(37.7577, -122.4376),  // center of SF
       radius: 1.0,
       map: null,
       mapHeight: window.innerHeight,
@@ -30,6 +33,7 @@ var Store = Reflux.createStore({
   },
 
   getTrucks: function() {
+    // pull new truck data from API and triggers a state change
     request
       .get('/api/nearby')
       .query({ lat: this.state['center'].lat(), lon: this.state['center'].lng(), radius: this.state.radius})
@@ -46,6 +50,7 @@ var Store = Reflux.createStore({
   },
 
   onClickMap: function(mapEvent) {
+    // set new center
     this.state['center'] = mapEvent.latLng;
     this.getTrucks();
   },
@@ -56,6 +61,7 @@ var Store = Reflux.createStore({
   },
 
   onChangeRadius: function(radius) {
+    // set new radius
     this.state.radius = radius;
     this.getTrucks();
   },
