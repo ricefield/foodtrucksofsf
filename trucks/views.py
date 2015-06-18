@@ -27,7 +27,7 @@ class NearbyTrucks(generics.ListAPIView):
             geolocator = GoogleV3()
             loc = geolocator.geocode(self.request.query_params['address']+ " San Francisco, CA")
             center = loc.latitude, loc.longitude
-        elif self.request.query_params.get('lat', False) and self.request.query_params.get('long', False):
+        elif self.request.query_params.get('lat', False) and self.request.query_params.get('lon', False):
             # get lat/long from query args
             center = float(self.request.query_params['lat']), float(self.request.query_params['lon'])
         else:
