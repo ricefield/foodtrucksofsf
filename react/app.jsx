@@ -30,6 +30,11 @@ var App = React.createClass({
 
   componentDidMount: function () {
     actions.load();     
+    window.addEventListener('resize', this.handleResize);
+  },
+
+  handleResize: function(e) {
+    actions.resize();
   },
 
   render: function() {

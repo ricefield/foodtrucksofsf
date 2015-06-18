@@ -43,9 +43,9 @@ var Store = Reflux.createStore({
   },
 
   onResize: function() {
-    // TODO: hook up DOM Event Listener to onResize()
     this.state['mapHeight'] = window.innerHeight;
     this.state['mapWidht'] = window.innerWidth;
+    this.trigger(this.state);
   },
 
   onClickMap: function(mapEvent) {
