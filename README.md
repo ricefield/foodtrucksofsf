@@ -46,12 +46,8 @@ To build JS:
 * `npm install`
 * run `webpack --watch` to build JS/JSX changes to `foodtrucks/static/app.js`
   * `webpack -p` for minified build (if you are submitting a pull request)
-* Run tests (coming soon)
+* ~~`npm test` (coming soon)~~ (waiting for [jest](http://facebook.github.io/jest/) to [fix Node 0.12 compatibility](https://github.com/facebook/jest/issues/243))
 
 
 ## License and Misc.
 [MIT License](https://github.com/ricefield/foodtrucksofsf/blob/master/LICENSE) | Code by [Jonathan Tien](http://ricefield.me)
-
-
-
-
